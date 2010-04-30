@@ -44,7 +44,7 @@ if ($ret === FALSE) {
 curl_close($ch);
 
 // RECUPERATION DE LA SESSION
-chmod('tmp/cookie-'.$IDU.'.txt',0777);
+//chmod('tmp/cookie-'.$IDU.'.txt',0777);
 if (!$fp = @fopen('tmp/cookie-'.$IDU.'.txt','rb')) 
 	{
 	echo "Echec de l'ouverture du fichier";
