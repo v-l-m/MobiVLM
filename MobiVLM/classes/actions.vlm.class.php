@@ -1,6 +1,6 @@
 <?php
 /* ***************************************************************
-Class qui pousse les ordres vers VLM
+Classe qui pousse les ordres vers VLM
 !! est trés sensible à la façon dont PHP et CURL sont configurés ! 
 ****************************************************************** */
 
@@ -8,13 +8,19 @@ class actionsvlm {
 	
 function open_session($pseudo,$password,$IDU,$serveur)
 	{
-	$pseudo = str_replace(" ", "%20",$pseudo);
-	$pseudo_curl = $pseudo;
-	$password = $password;
+	$pseudo_curl = $pseudo; // 
+	$pseudo = str_replace(" ", "%20",$pseudo); // PSEUDO FORMATE POUR LE PASSER DANS LES URLS
+	$password = $password; 
 	
 	//AUTHENTIFICATION
 	$this->ch = curl_init('http://'.$serveur.'.virtual-loup-de-mer.org/myboat.php');
+	$this_header = array(
+    "getip: ".$ip,
+	"getfullip: ".$fullip
+	); // envoi des infos du client réel
+	//curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this_header);
 	curl_setopt($this->ch, CURLOPT_POST, TRUE);
+	//curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
 	curl_setopt($this->ch, CURLOPT_POSTFIELDS,
 	    array(
 	        'pseudo' => $pseudo_curl,
@@ -46,12 +52,10 @@ function open_session($pseudo,$password,$IDU,$serveur)
 				{
 			
 				$Ligne = fgets($fp,255);
-				//echo $Ligne."<br>";
-					if (preg_match('/(PHPSESSID'.chr(9).'[0-9a-z,-]{32,40})/i', $Ligne, $m)) 
+				if (preg_match('/(PHPSESSID'.chr(9).'[0-9a-z,-]{32,40})/i', $Ligne, $m)) 
 					{
 					$this->sid = '&' . $m[1];
 					$this->sid = str_replace(chr(9),"=",$sid);
-					//echo "La variable de session sera => ".$sid."<br>";
 					}
 				}
 			fclose($fp); // On ferme le fichier
@@ -67,7 +71,7 @@ function make_event($event,$vars_get,$pseudo,$password,$IDU,$serveur,$sid)
 		$nextwplon = format_query($vars_get['lon']);
 		$targetandhdg = format_query($vars_get['targetandhdg']); // def -1
 		$andhdg = format_query($vars_get['andhdg']); // def off
-		$this->url = "http://".$serveur.".virtual-loup-de-mer.org/myboat.php?type=savemywp&pseudo=".$pseudo."&password=".$password."&targetlat=".$nextwplat."&targetlong=".$nextwplon."&targetandhdg=".$targetandhdg."&andhdg=".$andhdg;
+		$this->url = "http://".$serveur.".virtual-loup-de-mer.org/myboat.php?type=savemywp&targetlat=".$nextwplat."&targetlong=".$nextwplon."&targetandhdg=".$targetandhdg."&andhdg=".$andhdg;
 		}
 		
 		//EDITION DU CAP PIM=1
@@ -104,6 +108,7 @@ function exec_event($url,$IDU)
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
 		//curl_setopt($ch, CURLOPT_COOKIEFILE, realpath('cookie-'.$IDU.'.txt'));
 		curl_setopt($this->ch, CURLOPT_COOKIEFILE, './tmp/cookie-'.$IDU.'.txt');
+		curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, TRUE);
 		$ret = curl_exec($this->ch);
 		if ($ret === FALSE) 
 		{ die(curl_error()); }
