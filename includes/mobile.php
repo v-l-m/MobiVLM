@@ -38,7 +38,6 @@ function change_onglet(name)
 				<span class="onglet_0 onglet" id="onglet_1" onclick="javascript:change_onglet('1');">INFOS</span>
 				<span class="onglet_0 onglet" id="onglet_2" onclick="javascript:change_onglet('2');">NAVIG</span>
 				<span class="onglet_0 onglet" id="onglet_3" onclick="javascript:change_onglet('3');">CARTO</span>
-				<span class="onglet_0 onglet" id="onglet_4" onclick="javascript:change_onglet('4');">PILOTOTO</span>
 		  </div>
 		<br/>
 		<div class="contenu_onglets">
@@ -48,8 +47,6 @@ function change_onglet(name)
 		<?php include("includes/onglet_nav.php"); ?>
 		<!-- ONGLET 3 CARTOGRAPHIE -->
 		<?php include("includes/onglet_carto.php"); ?>
-		<!-- ONGLET 4 PILOTOTO -->
-		<?php include("includes/onglet_pilototo.php"); ?>
 		</div>  <!-- contenu_onglets -->
 	</div> <!-- </div>SYS onglets -->
 	<script type="text/javascript">
@@ -59,7 +56,6 @@ function change_onglet(name)
 					change_onglet(anc_onglet);
 			//-->
 	</script>
-	<?php include("includes/footer.php"); ?>
 </div> <!-- main div -->
 </body>
 </html>

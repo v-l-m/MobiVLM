@@ -119,6 +119,8 @@ if($data['PIM'] == "5") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; 
 </td>
 </tr>
 </table>
+
 </div>
+<br><a href="logout.php">LOGOUT</a><br>
 </div>
 

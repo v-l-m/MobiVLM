@@ -7,6 +7,7 @@
 	<hr />
 	<form action="carte.php" method="get" name="go_carto">
 	<input type="hidden" name="onglet" value="3">
+	<input type="hidden" name="serveur" value="S11">
 	<input type="hidden" name="RAC" value="<?php echo $data['RAC']; ?>">
 	<input type="hidden" name="map_lat" value="<?php echo $data['map_lat']; ?>">
 	<input type="hidden" name="map_lon" value="<?php echo $data['map_lon']; ?>">
@@ -79,6 +80,7 @@
 	</tr>
 	</table>
 	<hr />
+	<br><a href="logout.php">LOGOUT</a><br>
 	</form>
 	</div>
 </div>

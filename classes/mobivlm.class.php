@@ -13,21 +13,20 @@ class mobivlm {
 		curl_close($this->ch);
 		
 		$this->data['cur_date']=date("d/m/Y H:i:s");
-		$this->data['vac_date']=date("d/m/Y H:i:s",$this->data['LUP']);
 		$this->data['heure']=date("");
-		$this->data['current_infos'] = array($this->data['CNT'],$pseudo,utf8_decode($this->data['RAN']),$this->data['POS'],$this->data['vac_date']);
+		$this->data['current_infos'] = array($this->data['CNT'],$pseudo,utf8_decode($this->data['RAN']),$this->data['POS'],$this->data['cur_date']);
 		
 		$this->data['dsp_lat']=(round($this->data['LAT'])/1000);
 		$this->data['dsp_lon']=(round($this->data['LON'])/1000);
 		$this->data['dsp_hdg']=round($this->data['HDG']);
 		$this->data['map_lat'] = $this->data['LAT']/1000;
 		$this->data['map_lon'] = $this->data['LON']/1000;
-		$this->data['frm_eta'] = $this->format_eta($this->data['ETA']);
+		$this->data['frm_eta'] = format_eta($this->data['ETA']);
 		$this->data['dsp_ort']=round($this->data['ORT']);
 		$this->data['dsp_lox']=round($this->data['LOX']);
 		$this->data['dsp_tws']=round($this->data['TWS']);
 		$this->data['dsp_twd']=round($this->data['TWD']);
-		$this->data['angle_vent'] = $this->calcul_angle_vent($this->data['HDG'], $this->data['TWD']);
+		$this->data['angle_vent'] = calcul_angle_vent($this->data['HDG'], $this->data['TWD']);
 		
 		return $this->data;
 		}

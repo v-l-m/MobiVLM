@@ -15,7 +15,7 @@ La page de login utilise en include par index.php
 <div align="center"><img src="img/ban_vlm_mobi.jpg" width="240" height="25" /></div>
 <div class="txtbold1" align="center">Connexion VLM<hr></div>
 <div align="center">
-<form name="form1" method="post" action="">
+<form name="form1" method="get" action="">
   <table width="80%" border="0">
   <tr>
     <td width="30%"><div align="right"><strong>Pseudo : </strong></div></td>
