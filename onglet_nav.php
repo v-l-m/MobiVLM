@@ -1,6 +1,6 @@
 <!-- ONGLET 2 -->
 <div class="contenu_onglet" id="contenu_onglet_2">
-<?php echo $mobivlm->dsp_currents_infos($tpl_dsp_currents_infos); ?>
+<?php echo $current_infos; ?>
 <div bgcolor="#CCCCCC" align="center" width="100%" align="center">
 
 <table border="0" cellpadding="1" width="100%">
@@ -10,12 +10,12 @@
 <td class="txtbold1" width="33%" bgcolor="#cccccc">Vmg</td>
 </tr>
 <tr align="center">
-<td bgcolor="#FFFFFF" class="txtbold2"><?php echo $data['BSP']; ?></td>
-<td bgcolor="#FFFFFF" class="txtbold2"><?php echo $data['dsp_hdg']; ?></td>
-<td bgcolor="#FFFFFF" class="txtbold2"><?php echo $data['VMG']; ?></td>
+<td bgcolor="#FFFFFF" class="txtbold2"><?php echo $BSP; ?></td>
+<td bgcolor="#FFFFFF" class="txtbold2"><?php echo (round($HDG*10)/10); ?></td>
+<td bgcolor="#FFFFFF" class="txtbold2"><?php echo $VMG; ?></td>
 </tr>
 </table>
-<hr>
+<hr><br>
 <table border="0" cellpadding="1">
 <tr>
 <td class="txtbold1" align="left" bgcolor="#FFFFFF" colspan="3">Mode Pilote</td>
@@ -26,32 +26,32 @@
 <input type="hidden" name="event" value="pim1">
 <td class="txtbold1" width="33%" align="left" bgcolor="#cccccc">CAP</td>
 <td class="txtbold1" width="33%" align="center">
-<input name="hdg" type="text" value="<?php echo $data['dsp_hdg']; ?>" class="txtbold1" size="10"></td>
+<input name="hdg" type="text" value="<?php echo (round($HDG*10)/10); ?>" class="txtbold1" size="10"></td>
 <td class="txtbold1" width="33%" align="left">
 <?php
-if($data['PIM'] == "1") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
+if($PIM == "1") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
 ?>
 <input name="btsub" type="submit" value="CAP FIXE" class="<?php echo $btstyle; ?>">
 </td>
 </form>
 </tr>
-<tr><td colspan="3"></td></tr>
+<tr><td colspan="3"><br></td></tr>
 <form method="get" action="<?php echo $url_actions; ?>">
 <input type="hidden" name="onglet" value="2">
 <input type="hidden" name="event" value="pim2">
 <tr>
 <td class="txtbold1" width="33%" align="left" bgcolor="#cccccc">ANGLE</td>
 <td class="txtbold1" width="33%" align="center">
-<input name="twa" type="text" value="<?php echo $data['angle_vent']; ?>" class="txtbold1" size="10"></td>
+<input name="twa" type="text" value="<?php echo calcul_angle_vent($HDG, $TWD); ?>" class="txtbold1" size="10"></td>
 <td class="txtbold1" width="33%" align="left">
 <?php
-if($data['PIM'] == "2") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
+if($PIM == "2") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
 ?>
 <input name="btsub" type="submit" value="REGULATEUR" class="<?php echo $btstyle; ?>">
 </td>
 </tr>
 </form>
-<tr><td colspan="3"><hr></td></tr>
+<tr><td colspan="3"><hr><br></td></tr>
 <tr>
 <td class="txtbold1" width="33%" align="left" bgcolor="#FFFFFF" colspan="3">Way Point</td>
 </tr>
@@ -61,28 +61,19 @@ if($data['PIM'] == "2") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; 
 <tr>
 <td class="txtbold1" width="33%" align="left" bgcolor="#cccccc">LATITUDE</td>
 <td class="txtbold1" width="33%" align="center">
-<input name="lat" type="text" value="<?php echo $data['WPLAT']; ?>" class="txtbold1" size="10%">
+<input name="lat" type="text" value="<?php echo $WPLAT; ?>" class="txtbold1" size="10%">
 </td>
 <td class="txtbold1" width="33%" align="left"></td>
 </tr>
 <tr>
 <td class="txtbold1" width="33%" align="left" bgcolor="#cccccc">LONGITUDE</td>
 <td class="txtbold1" width="33%" align="center">
-<input name="lon" type="text" value="<?php echo $data['WPLON']; ?>" class="txtbold1" size="10">
+<input name="lon" type="text" value="<?php echo $WPLON; ?>" class="txtbold1" size="10">
 </td>
-<td class="txtbold1" width="33%" align="left"></td>
-</tr>
-<tr>
-<td class="txtbold1" width="33%" align="left" bgcolor="#cccccc">@WPH</td>
-<td class="txtbold1" width="33%" align="center">
-<input name="targetandhdg" type="text" value="<?php echo $data['H@WP']; ?>" class="txtbold1" size="10">
-</td>
-<td class="txtbold1" width="33%" align="left">
-<input name="btsub" type="submit" value="CHANGER" class="txtbold1">
-</td>
+<td class="txtbold1" width="33%" align="left"><input name="btsub" type="submit" value="CHANGER" class="txtbold1"></td>
 </tr>
 </form>
-<tr><td colspan="3"><hr></td></tr>
+<tr><td colspan="3"><hr><br></td></tr>
 <tr>
 <td class="txtbold1" width="33%" align="left" bgcolor="#FFFFFF" colspan="3">Mode de suivi du Way Point</td>
 </tr>
@@ -92,7 +83,7 @@ if($data['PIM'] == "2") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; 
 <input type="hidden" name="onglet" value="2">
 <input type="hidden" name="event" value="pim3">
 <?php
-if($data['PIM'] == "3") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
+if($PIM == "3") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
 ?>
 <input name="btsub" type="submit" value="ORTHO" class="<?php echo $btstyle; ?>">
 </form>
@@ -102,7 +93,7 @@ if($data['PIM'] == "3") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; 
 <input type="hidden" name="onglet" value="2">
 <input type="hidden" name="event" value="pim4">
 <?php
-if($data['PIM'] == "4") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
+if($PIM == "4") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
 ?>
 <input name="btsub" type="submit" value="BVMG" class="<?php echo $btstyle; ?>">
 </form>
@@ -112,13 +103,23 @@ if($data['PIM'] == "4") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; 
 <input type="hidden" name="onglet" value="2">
 <input type="hidden" name="event" value="pim5">
 <?php
-if($data['PIM'] == "5") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
+if($PIM == "5") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; }
 ?>
 <input name="btsub" type="submit" value="VBVMG" class="<?php echo $btstyle; ?>">
 </form>
 </td>
 </tr>
 </table>
+
 </div>
+<?php
+/*
+$LAT_DMS = DECtoDMS($LAT);
+$LON_DMS = DECtoDMS($LON);
+echo $LAT_DMS['deg']." ".$LAT_DMS['min']."' ".$LAT_DMS['sec']."\"<br>";
+echo $LON_DMS['deg']." ".$LON_DMS['min']."' ".$LON_DMS['sec']."\"<br>";
+*/
+?>
+<br><a href="logout.php">LOGOUT</a><br>
 </div>
 

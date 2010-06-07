@@ -1,6 +1,10 @@
 <!-- ONGLET 3 -->
 <div class="contenu_onglet" id="contenu_onglet_3">
-<?php echo $mobivlm->dsp_currents_infos($tpl_dsp_currents_infos); ?>
+<?php
+$map_lat = $LAT/1000;
+$map_lon = $LON/1000;
+?>
+<?php echo $current_infos; ?>
 	<div class="txtbold1" align="center">
 	<hr />
 	<div class="txtbold1">CARTOGRAPHIE</div>
@@ -8,10 +12,10 @@
 	<form action="carte.php" method="get" name="go_carto">
 	<input type="hidden" name="onglet" value="3">
 	<input type="hidden" name="serveur" value="S11">
-	<input type="hidden" name="RAC" value="<?php echo $data['RAC']; ?>">
-	<input type="hidden" name="map_lat" value="<?php echo $data['map_lat']; ?>">
-	<input type="hidden" name="map_lon" value="<?php echo $data['map_lon']; ?>">
-	<input type="hidden" name="IDU" value="<?php echo $data['IDU']; ?>">
+	<input type="hidden" name="RAC" value="<?php echo $RAC; ?>">
+	<input type="hidden" name="map_lat" value="<?php echo $map_lat; ?>">
+	<input type="hidden" name="map_lon" value="<?php echo $map_lon; ?>">
+	<input type="hidden" name="IDU" value="<?php echo $IDU; ?>">
 	<table border="0" cellpadding="1" width="66%">
 	<tr>
 	<td class="txtbold1" width="33%" bgcolor="#ffffff">HEURE : </td>

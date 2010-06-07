@@ -6,16 +6,16 @@ La page de login utilise en include par index.php
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">
 <html>
 <head>
-<title>LOGIN <?php echo $version; ?></title>
+<title>LOGIN MobiVLM</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta http-equiv="Cache-Control" content="public"/>
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div align="center"><img src="img/ban_vlm_mobi.jpg" width="240" height="25" /></div>
+<div align="center"><img src="ban_vlm_mobi.jpg" width="240" height="25" /></div>
 <div class="txtbold1" align="center">Connexion VLM<hr></div>
 <div align="center">
-<form name="form1" method="post" action="">
+<form name="form1" method="get" action="">
   <table width="80%" border="0">
   <tr>
     <td width="30%"><div align="right"><strong>Pseudo : </strong></div></td>
