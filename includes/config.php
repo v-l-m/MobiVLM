@@ -1,7 +1,7 @@
 <?php
 $version = "MobiVLM V 0.2";
 $userAgent = "IE 7 - Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)";
-$serveur = "testing";
+$serveur = "www";
 
 $dateheure_ref_gmt = mktime(
 gmdate("H",time()), gmdate("i",time()), gmdate("s",time()),
