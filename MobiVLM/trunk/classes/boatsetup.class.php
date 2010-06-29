@@ -80,7 +80,7 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 		
 	$this->ch = curl_init('http://'.$serveur.'.virtual-loup-de-mer.org/ws/boatsetup/'.$script);
 	curl_setopt($this->ch, CURLOPT_USERPWD, "$pseudo:$password");
-	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_PROXY_AGENT: MobiVLM"));
+	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_PROXY_AGENT: MobiVLM/0.21 (user=".$_SESSION['IDU'].")"));
 	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_PROXY_PASS: ".$proxypass));
 	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_CLIENT_IP: ".$ip));
 	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_CLIENT_FULLIP: ".$fullip));
