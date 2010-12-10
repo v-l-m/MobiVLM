@@ -7,33 +7,33 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 	$mode_debug = "false";
 	$ip = $this->getip();
 	$fullip = $this->getfullip();
-	$proxypass = "proxypass";
+	$proxypass = "4dr0mAZj";
 	$userAgent = $_SERVER['HTTP_USER_AGENT'];
 	
 	switch ($vars['event'])
 		{
 		case "pim1": // CAP FIXE
-		$script = "pilot_set.php";
+		$script = "pilot_set.php?select_idu=".$IDU;
 		$parms = '{"pim":1,"pip":'.$vars['hdg'].',"debug":'.$mode_debug.',"idu":'.$IDU.'}';
 		break;
 		case "pim2": // ANGLE FIXE
-		$script = "pilot_set.php";
+		$script = "pilot_set.php?select_idu=".$IDU;
 		$parms = '{"pim":2,"pip":'.$vars['twa'].',"debug":'.$mode_debug.',"idu":'.$IDU.'}';
 		break;
 		case "pim3": // PILOTE ORTHO
-		$script = "pilot_set.php";
+		$script = "pilot_set.php?select_idu=".$IDU;
 		$parms = '{"pim":3,"idu":'.$IDU.'}';
 		break;
 		case "pim4": // PILOTE BVMG
-		$script = "pilot_set.php";
+		$script = "pilot_set.php?select_idu=".$IDU;
 		$parms = '{"pim":4,"idu":'.$IDU.'}';
 		break;
 		case "pim5": // PILOTE VBVMG
-		$script = "pilot_set.php";
+		$script = "pilot_set.php?select_idu=".$IDU;
 		$parms = '{"pim":5,"idu":'.$IDU.'}';
 		break;
 		case "newwp": // MAJ WP
-		$script = "target_set.php";
+		$script = "target_set.php?select_idu=".$IDU;
 		$parms = '{"pip":{"targetlat":'.$vars['lat'].',"targetlong":'.$vars['lon'].',"targetandhdg":'.$vars['targetandhdg'].'},"debug":'.$mode_debug.',"idu":'.$IDU.'}';
 		break;
 		case "pilototo": // PILOTOTO QUOI ...
@@ -41,7 +41,7 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 		$mktts = mktime($vars['tts_heure'], $vars['tts_min'], 0, $tab_date[1], $tab_date[0], $tab_date[2]);
 		if(isset($vars['pilototo_add']))
 			{
-			$script = "pilototo_add.php";
+			$script = "pilototo_add.php?select_idu=".$IDU;
 				if($vars['pim']=="1" || $vars['pim']=="2")
 				{
 				$parms = '{"tasktime":'.$mktts.',"pim":'.$vars['pim'].',"pip":'.$vars['pip'].',"debug":'.$mode_debug.',"idu":'.$IDU.'}';
@@ -55,7 +55,7 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 			}
 		if(isset($vars['pilototo_update']))
 			{
-			$script = "pilototo_update.php";
+			$script = "pilototo_update.php?select_idu=".$IDU;
 				if($vars['pim']=="1" || $vars['pim']=="2")
 				{
 				$parms = '{"taskid":'.$vars['taskid'].',"tasktime":'.$mktts.',"pim":'.$vars['pim'].',"pip":'.$vars['pip'].',"debug":'.$mode_debug.',"idu":'.$IDU.'}';
@@ -69,7 +69,7 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 			}
 		if(isset($vars['pilototo_delete']))
 			{
-			$script = "pilototo_delete.php";
+			$script = "pilototo_delete.php?select_idu=".$IDU;
 			$parms = '{"taskid":'.$vars['taskid'].',"debug":'.$mode_debug.',"idu":'.$IDU.'}';
 			}
 		break;

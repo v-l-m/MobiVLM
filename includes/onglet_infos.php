@@ -1,6 +1,6 @@
 <!-- ONGLET 1 -->
-<div class="contenu_onglet" id="contenu_onglet_1">
-<?php echo $mobivlm->dsp_currents_infos($tpl_dsp_currents_infos); ?>
+<div class="ptitle">Informations</div>
+<div class="pbloc">
 <div align="center" width="100%" align="center">
 <table border="0" cellpadding="1" width="66%">
 <tr align="center">
@@ -70,4 +70,5 @@
 </div>
 
 </div>
+<br/>
 

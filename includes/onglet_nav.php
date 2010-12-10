@@ -1,6 +1,6 @@
 <!-- ONGLET 2 -->
-<div class="contenu_onglet" id="contenu_onglet_2">
-<?php echo $mobivlm->dsp_currents_infos($tpl_dsp_currents_infos); ?>
+<div class="ptitle">Navigation</div>
+<div class="pbloc">
 <div bgcolor="#CCCCCC" align="center" width="100%" align="center">
 
 <table border="0" cellpadding="1" width="100%">
@@ -121,4 +121,4 @@ if($data['PIM'] == "5") { $btstyle = "btactif"; } else { $btstyle = "txtbold1"; 
 </table>
 </div>
 </div>
-
+<br/>

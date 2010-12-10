@@ -1,10 +1,8 @@
 <!-- ONGLET 3 -->
-<div class="contenu_onglet" id="contenu_onglet_4">
-<?php echo $mobivlm->dsp_currents_infos($tpl_dsp_currents_infos); ?>
+<div class="ptitle">Pilototo</div>
+<div class="pbloc">
 	<div class="txtbold1" align="center">
-	<hr />
-	<div class="txtbold1">PILOTOTO</div>
-	<hr />
+	
 <table border="0" width="100%">
 <tr>
 <td class="txtbold1" bgcolor="#FFFFFF">Date ordre</td>
@@ -20,7 +18,7 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 <input type="hidden" name="event" value="pilototo">
 <input type="hidden" name="taskid" value="<?php echo $val['TID']; ?>">
 <tr bgcolor="<?php echo $rowbgcolor; ?>">
-	<td class="txtbold1">
+	<td class="txtbold1" colspan="3">
 	<select name="tts_day" class="txtbold1"> 
     <option value="<?php echo date("d,m,Y",time() ); ?>" <?php if(date("d/m/Y",$val['TTS'])==date("d/m/Y",time() )) { echo "selected"; } ?>><?php echo gmdate("d/m/Y",time() ); ?></option>
 	<option value="<?php echo date("d,m,Y",time() + 86400 ); ?>" <?php if(date("d/m/Y",$val['TTS'])==date("d/m/Y",time()  + 86400 )) { echo "selected"; } ?>><?php echo gmdate("d/m/Y",time() + 86400 ); ?></option>
@@ -31,8 +29,8 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 	<option value="<?php echo date("d,m,Y",time() + (6*86400) ); ?>" <?php if(date("d/m/Y",$val['TTS'])==date("d/m/Y",time() + (6*86400) )) { echo "selected"; } ?>><?php echo gmdate("d/m/Y",time() + (6*86400) ); ?></option>
 	<option value="<?php echo date("d,m,Y",time() + (7*86400) ); ?>" <?php if(date("d/m/Y",$val['TTS'])==date("d/m/Y",time() + (7*86400) )) { echo "selected"; } ?>><?php echo gmdate("d/m/Y",time() + (7*86400) ); ?></option>
 	</select>
-<br>
-	H <select name="tts_heure" class="txtbold1"> 
+
+	&nbsp;&nbsp;&nbsp;H <select name="tts_heure" class="txtbold1"> 
 		<?php
 		for($i = 0; $i < 25; ++$i)
 		{
@@ -43,7 +41,7 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 		?>
 	</select>
 	
-	MN <select name="tts_min" class="txtbold1"> 
+	&nbsp;&nbsp;MN <select name="tts_min" class="txtbold1"> 
 		<?php
 		for($i = 0; $i < 61; ++$i)
 		{
@@ -53,8 +51,10 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 		}
 		?>
 	</select>
-
+<br/><br/>
 	</td>
+	</tr><tr bgcolor="<?php echo $rowbgcolor; ?>">
+	<td></td>
 	<td>
 	<select name="pim" class="txtbold1"> 
     <option value="1" <?php if($val['PIM']=="1") { echo "selected"; } ?>>1:Cap fixe</option>
@@ -85,7 +85,7 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 <input type="hidden" name="event" value="pilototo">
 <input type="hidden" name="taskid" value="<?php echo $val['TID']; ?>">
 <tr bgcolor="#ffffff">
-	<td class="txtbold1">
+	<td class="txtbold1" colspan="3">
 	<select name="tts_day" class="txtbold1"> 
     <option value="<?php echo date("d,m,Y",time() ); ?>"><?php echo gmdate("d/m/Y",time() ); ?></option>
 	<option value="<?php echo date("d,m,Y",time() + 86400 ); ?>"><?php echo gmdate("d/m/Y",time() + 86400 ); ?></option>
@@ -96,8 +96,8 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 	<option value="<?php echo date("d,m,Y",time() + (6*86400) ); ?>"><?php echo gmdate("d/m/Y",time() + (6*86400) ); ?></option>
 	<option value="<?php echo date("d,m,Y",time() + (7*86400) ); ?>"><?php echo gmdate("d/m/Y",time() + (7*86400) ); ?></option>
 	</select>
-<br>
-	H <select name="tts_heure" class="txtbold1"> 
+
+	&nbsp;&nbsp;&nbsp;H <select name="tts_heure" class="txtbold1"> 
 		<?php
 		for($i = 0; $i < 25; ++$i)
 		{
@@ -108,7 +108,7 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 		?>
 	</select>
 	
-	MN <select name="tts_min" class="txtbold1"> 
+	&nbsp;&nbsp;MN <select name="tts_min" class="txtbold1"> 
 		<?php
 		for($i = 0; $i < 61; ++$i)
 		{
@@ -118,8 +118,10 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 		}
 		?>
 	</select>
-
+<br/><br/>
 	</td>
+	</tr><tr>
+	<td></td>
 	<td>
 	<select name="pim" class="txtbold1"> 
     <option value="1">1:Cap fixe</option>
@@ -141,3 +143,4 @@ if($val['STS']=="pending") { $rowbgcolor ="#50EF82"; } else { $rowbgcolor ="#996
 </table>
 	</div>
 </div>
+<br/>

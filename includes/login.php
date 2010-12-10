@@ -3,10 +3,13 @@
 La page de login utilise en include par index.php
 ****************************************************************** */
 ?>
-<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>LOGIN <?php echo $version; ?></title>
+<title>VLM Mobiles - LOGIN</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-touch-fullscreen" content="YES" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta http-equiv="Cache-Control" content="public"/>
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,7 +21,7 @@ La page de login utilise en include par index.php
 <form name="form1" method="post" action="">
   <table width="80%" border="0">
   <tr>
-    <td width="30%"><div align="right"><strong>Pseudo : </strong></div></td>
+    <td width="30%"><div align="right"><strong>Email : </strong></div></td>
     <td width="50%"><input name="pseudo" type="text" size="12"></td>
   </tr>
   <tr>

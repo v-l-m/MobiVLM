@@ -1,9 +1,9 @@
 <?php
 class mobivlm {
-	function alldatas($base_url,$pseudo,$password)
+	function alldatas($base_url,$pseudo,$password,$idu)
 		{
 		$this->ch = curl_init();
-		curl_setopt($this->ch, CURLOPT_URL, $base_url);
+		curl_setopt($this->ch, CURLOPT_URL, $base_url."&select_idu=".$idu);
 		curl_setopt($this->ch, CURLOPT_USERPWD, $pseudo.":".$password);
 		curl_setopt($this->ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 		// Retourne le resultat au lieu de l'imprimer 
@@ -32,6 +32,20 @@ class mobivlm {
 		return $this->data;
 		}
 		
+	function get_fleet($fleet_url,$pseudo,$password)
+		{
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $fleet_url);
+			curl_setopt($ch, CURLOPT_USERPWD, $pseudo.":".$password);
+			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+			// Retourne le resultat au lieu de l'imprimer 
+			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+			$data = curl_exec ($ch);
+			$data = json_decode($data, true);
+			curl_close($ch);
+			return $data;
+		}
+	
 	function format_eta($val)
 		{
 		str_replace("T"," ",$val);
