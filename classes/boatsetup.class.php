@@ -1,14 +1,13 @@
 <?php
-//CLASSE DE MISE A JOUR DES ORDRES DE NAVIGATION
+// PROXYID => ,"proxyid":{"ip":"'.$ip.'","proxyagent":"'.$proxyagent.'","proxypass":"'.$proxypass.'"}
 class boatsetup { 
 	
 function majboat($pseudo,$password,$vars,$IDU,$serveur)
 	{
 	$mode_debug = "false";
 	$ip = $this->getip();
-	$fullip = $this->getfullip();
-	$proxypass = "proxypass";
-	$userAgent = $_SERVER['HTTP_USER_AGENT'];
+	$proxypass = $this->getfullip();
+	$proxyagent = $_SERVER['HTTP_USER_AGENT'];
 	
 	switch ($vars['event'])
 		{
@@ -78,15 +77,9 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 		// DEBUG
 		//echo "ordre = ".$parms." pip = ".$pip." - ".$pip[0]." - ".$pip[1]." - ".$pip[2]."<hr>";
 		
-	$this->ch = curl_init('http://'.$serveur.'.virtual-loup-de-mer.org/ws/boatsetup/'.$script);
-	curl_setopt($this->ch, CURLOPT_USERPWD, "$pseudo:$password");
-	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_PROXY_AGENT: MobiVLM/0.21 (user=".$_SESSION['IDU'].")"));
-	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_PROXY_PASS: ".$proxypass));
-	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_CLIENT_IP: ".$ip));
-	curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("VLM_CLIENT_FULLIP: ".$fullip));
-	curl_setopt($this->ch, CURLOPT_USERAGENT, $userAgent);
-	curl_setopt($this->ch, CURLOPT_HEADER, FALSE);
+	$this->ch = curl_init('http://'.$pseudo.':'.$password.'@'.$serveur.'.virtual-loup-de-mer.org/ws/boatsetup/'.$script);
 	curl_setopt($this->ch, CURLOPT_POST, TRUE);
+	//curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
 	curl_setopt($this->ch, CURLOPT_POSTFIELDS,
 	    array(
 	        'parms' => $parms
@@ -94,7 +87,6 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 	);
 	curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, TRUE);
 	curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
-	
 	$this->ret = curl_exec($this->ch);
 	if ($this->ret === FALSE) {
 	    die(curl_error());
@@ -171,5 +163,5 @@ function majboat($pseudo,$password,$vars,$IDU,$serveur)
 		return $ipstr;
 	}
 
-}
+} // FIN DE CLASSE
 ?>
